@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kwickr – Work Near You. Earn More.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- TOAST CONTAINER -->
+<div id="toastContainer" class="toast-container"></div>
+
+<!-- BACK TO TOP -->
+<button id="backToTop" class="back-to-top" aria-label="Back to top">↑</button>
+
+<!-- ══════════════════════════════════════
+     NAVBAR
+══════════════════════════════════════ -->
+<nav class="navbar" id="navbar">
+  <div class="container nav-inner">
+    <a href="#home" class="nav-logo">
+      <svg width="38" height="38" viewBox="0 0 38 38" fill="none">
+        <rect width="38" height="38" rx="10" fill="#4B1FA8"/>
+        <text x="6" y="28" font-size="22" font-weight="900" fill="white" font-family="Poppins,sans-serif">K</text>
+        <line x1="27" y1="9"  x2="36" y2="9"  stroke="#A78BFA" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="29" y1="15" x2="36" y2="15" stroke="#A78BFA" stroke-width="2"   stroke-linecap="round"/>
+        <line x1="27" y1="21" x2="36" y2="21" stroke="#A78BFA" stroke-width="2.5" stroke-linecap="round"/>
+      </svg>
+      <span class="logo-text">KWICKR</span>
+    </a>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#how-it-works">How It Works</a></li>
+      <li><a href="#features">Features</a></li>
+      <li><a href="#for-providers">Job Providers</a></li>
+      <li><a href="#for-freelancers">Freelancers</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+
+    <div class="nav-actions">
+      <button class="btn btn-outline" onclick="goToPostTaskBoard()">Post a Task</button>
+      <button class="btn btn-green"   onclick="openAuthModal('worker')">Become a Worker</button>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">🌙</button>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- ══════════════════════════════════════
+     HERO
+══════════════════════════════════════ -->
+<section class="hero" id="home">
+  <div class="container hero-inner">
+    <div class="hero-text">
+      <div class="hero-badge">📍 Hyperlocal Gig Platform</div>
+      <h1>Work Near You.<br/><span class="gradient-text">Earn More.</span></h1>
+      <p class="hero-sub">
+        Kwickr connects people who need short-term work done with skilled
+        freelancers and workers nearby. Right Task. Right Person. Right Nearby.
+      </p>
+      <div class="hero-pills">
+        <span class="pill pill-purple">⚡ Same-Day Tasks</span>
+        <span class="pill pill-green">✅ Verified Workers</span>
+        <span class="pill pill-blue">📱 QR Handshake</span>
+        <span class="pill pill-orange">🔒 Secure Payment</span>
+      </div>
+      <div class="hero-cta">
+        <button class="btn btn-primary" onclick="goToPostTaskBoard()">Post a Task</button>
+        <button class="btn btn-green"   onclick="goToNearbyTasksBoard()">Find Work Nearby</button>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="radius-ring"></div>
+      <div class="location-pin pin1">📍</div>
+      <div class="location-pin pin2">📍</div>
+      <div class="location-pin pin3">📍</div>
+      <div class="hero-arrow arrow-purple">→</div>
+      <div class="hero-arrow arrow-green">←</div>
+      <div class="phone-mockup">
+        <div class="phone-screen">
+          <div class="phone-logo">
+            <svg width="42" height="42" viewBox="0 0 42 42" fill="none">
+              <rect width="42" height="42" rx="11" fill="#4B1FA8"/>
+              <text x="7" y="30" font-size="24" font-weight="900" fill="white" font-family="Poppins,sans-serif">K</text>
+            </svg>
+            <span style="color:#4B1FA8;font-weight:800;font-size:1rem;letter-spacing:1px;">KWICKR</span>
+          </div>
+          <div class="phone-stats">
+            <div class="pstat"><span class="pstat-num">2.4k</span><span>Tasks</span></div>
+            <div class="pstat"><span class="pstat-num">★4.8</span><span>Rating</span></div>
+          </div>
+          <div class="phone-status-bar">
+            <div class="phone-status-dot"></div>
+            <span>3 workers nearby</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     TWO-SIDED
+══════════════════════════════════════ -->
+<section class="two-sided" id="two-sided">
+  <div class="container two-sided-inner">
+    <div class="side-card card-provider reveal">
+      <div class="side-icon">🧑‍💼</div>
+      <h3>JOB PROVIDER</h3>
+      <ul class="checklist">
+        <li>✅ Post your task in minutes</li>
+        <li>✅ Set location from Google Maps</li>
+        <li>✅ Get matched with nearby workers</li>
+        <li>✅ Pay securely on completion</li>
+      </ul>
+      <button class="btn btn-primary" onclick="goToPostTaskBoard()">Post a Task</button>
+    </div>
+
+    <div class="center-phone reveal">
+      <div class="mini-phone">
+        <svg width="44" height="44" viewBox="0 0 44 44" fill="none">
+          <rect width="44" height="44" rx="11" fill="#4B1FA8"/>
+          <text x="8" y="32" font-size="26" font-weight="900" fill="white" font-family="Poppins,sans-serif">K</text>
+        </svg>
+        <div style="color:#4B1FA8;font-weight:700;font-size:.85rem;margin-top:.3rem;">KWICKR</div>
+        <div class="mini-connecting">⚡ Matching...</div>
+      </div>
+    </div>
+
+    <div class="side-card card-worker reveal">
+      <div class="side-icon">👷</div>
+      <h3>FREELANCER / WORKER</h3>
+      <ul class="checklist">
+        <li>✅ Find nearby tasks instantly</li>
+        <li>✅ Accept &amp; do the work</li>
+        <li>✅ Show QR code on arrival</li>
+        <li>✅ Earn money same day</li>
+      </ul>
+      <button class="btn btn-green" onclick="openAuthModal('worker')">Start Earning</button>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     HOW IT WORKS
+══════════════════════════════════════ -->
+<section class="how-it-works" id="how-it-works">
+  <div class="container">
+    <h2 class="section-title text-center">How It <span class="gradient-text">Works</span></h2>
+    <p class="section-sub text-center">Four simple steps from posting to payment</p>
+    <div class="steps-grid">
+      <div class="step-card reveal" data-step="1">
+        <div class="step-icon">📋</div>
+        <div class="step-num">01</div>
+        <h4>Post Task</h4>
+        <p>Job provider posts the task with details, location (from Google Maps) &amp; budget.</p>
+      </div>
+      <div class="step-arrow reveal">→</div>
+      <div class="step-card reveal" data-step="2">
+        <div class="step-icon">🔔</div>
+        <div class="step-num">02</div>
+        <h4>Find Match</h4>
+        <p>Nearby verified freelancers get notified and send acceptance requests.</p>
+      </div>
+      <div class="step-arrow reveal">→</div>
+      <div class="step-card reveal" data-step="3">
+        <div class="step-icon">📱</div>
+        <div class="step-num">03</div>
+        <h4>QR Verification</h4>
+        <p>Worker arrives and shows a unique QR code. Provider scans to confirm identity.</p>
+      </div>
+      <div class="step-arrow reveal">→</div>
+      <div class="step-card reveal" data-step="4">
+        <div class="step-icon">💳</div>
+        <div class="step-num">04</div>
+        <h4>Task Complete</h4>
+        <p>Provider confirms work done, makes secure payment, and rates the worker.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     FEATURES
+══════════════════════════════════════ -->
+<section class="features" id="features">
+  <div class="container">
+    <h2 class="section-title text-center">Key <span class="gradient-text">Features</span></h2>
+    <p class="section-sub text-center">Everything you need for hyperlocal work — built in</p>
+    <div class="features-grid">
+      <div class="feature-card reveal">
+        <div class="feat-icon">📱</div>
+        <h4>QR On-Site Verification</h4>
+        <p>Worker shows a unique QR code on arrival. Provider scans to confirm the right person is there — no confusion, maximum trust.</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feat-icon">📍</div>
+        <h4>Hyperlocal Matching</h4>
+        <p>Connects job providers with verified nearby workers within a custom radius — minimum travel, maximum speed.</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feat-icon">⚡</div>
+        <h4>Quick &amp; Easy</h4>
+        <p>Post a task in under 2 minutes. Pick location from Google Maps. Get a worker same day.</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feat-icon">🛡️</div>
+        <h4>Safe &amp; Trusted</h4>
+        <p>Verified profiles with selfie + government ID, phone OTP, star ratings and secure simulated payments.</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feat-icon">💬</div>
+        <h4>Built-in Chat</h4>
+        <p>Direct messaging between provider and worker. Share progress photos. Quick chips for common messages.</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feat-icon">💰</div>
+        <h4>Earn Extra Income</h4>
+        <p>Workers earn on flexible hours. Pick tasks that fit your schedule and skills. Get paid same day.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     FOR PROVIDERS / FREELANCERS
+══════════════════════════════════════ -->
+<section id="for-providers" class="for-sections">
+  <div class="container">
+    <div class="for-banner for-provider-banner reveal">
+      <div class="for-banner-text">
+        <span class="for-tag">For Job Providers</span>
+        <h3>Get work done. Save time. Hassle-free.</h3>
+        <p>Post any task — home repairs, deliveries, cleaning — and connect with verified local workers in minutes.</p>
+        <button class="btn btn-white" onclick="goToPostTaskBoard()">Post a Task Now →</button>
+      </div>
+      <div class="for-banner-icon">🧑‍💼</div>
+    </div>
+  </div>
+</section>
+
+<section id="for-freelancers" class="for-sections">
+  <div class="container">
+    <div class="for-banner for-worker-banner reveal">
+      <div class="for-banner-icon">👷</div>
+      <div class="for-banner-text">
+        <span class="for-tag for-tag-white">For Freelancers</span>
+        <h3>Find work nearby. Earn more. Be your own boss.</h3>
+        <p>Browse local tasks, accept what suits you, arrive with your QR pass and get paid the same day.</p>
+        <button class="btn btn-white" onclick="goToNearbyTasksBoard()">Browse Nearby Tasks →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     WORKING DEMO
+══════════════════════════════════════ -->
+<section class="working-demo" id="workingDemo">
+  <div class="container">
+    <h2 class="section-title text-center">Live <span class="gradient-text">Demo</span></h2>
+    <p class="section-sub text-center">Try Kwickr right here — post tasks, browse nearby jobs, track full lifecycle</p>
+
+    <div class="app-tabs">
+      <button class="app-tab-btn active" data-target="postTaskTab">📋 Post a Task</button>
+      <button class="app-tab-btn"        data-target="nearbyTasksTab">🗺️ Nearby Tasks</button>
+      <button class="app-tab-btn"        data-target="lifecycleTab">⚙️ Task Lifecycle</button>
+    </div>
+
+    <!-- POST TASK TAB -->
+    <div class="app-tab-content active" id="postTaskTab">
+      <form class="task-form" id="postTaskForm" novalidate>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="taskTitle">Task Title *</label>
+            <input type="text" id="taskTitle" placeholder="e.g. Fix my kitchen tap" required />
+          </div>
+          <div class="form-group">
+            <label for="taskCategory">Category *</label>
+            <select id="taskCategory" required>
+              <option value="">Select category</option>
+              <option>Delivery</option>
+              <option>Cleaning</option>
+              <option>Repair</option>
+              <option>Tutoring</option>
+              <option>Moving Help</option>
+              <option>Errands</option>
+              <option>Other</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="taskDescription">Description *</label>
+          <textarea id="taskDescription" rows="3" placeholder="Describe what needs to be done in detail..." required></textarea>
+        </div>
+        <div class="form-group">
+          <label>Location *</label>
+          <div class="location-input-group">
+            <input type="text" id="taskLocation" placeholder="Enter address or use GPS / Map" required />
+            <button type="button" class="btn btn-outline btn-sm" id="useGpsBtn">📍 GPS</button>
+            <button type="button" class="btn btn-outline btn-sm" id="openMapPickerBtn">🗺️ Map</button>
+          </div>
+          <input type="hidden" id="taskLat" />
+          <input type="hidden" id="taskLng" />
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="taskDateTime">Date &amp; Time *</label>
+            <input type="datetime-local" id="taskDateTime" required />
+          </div>
+          <div class="form-group">
+            <label for="taskBudget">Budget (₹) *</label>
+            <input type="number" id="taskBudget" placeholder="e.g. 500" min="50" required />
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary btn-full">🚀 Post Task</button>
+      </form>
+    </div>
+
+    <!-- NEARBY TASKS TAB -->
+    <div class="app-tab-content" id="nearbyTasksTab">
+      <div class="demo-banner">
+        <span>🎲 Demo Mode — sample tasks shown below to illustrate how Kwickr works</span>
+        <div class="demo-btns">
+          <button class="btn btn-outline btn-sm" id="addRandomJobBtn">+ Add Random Job</button>
+          <button class="btn btn-outline btn-sm" id="resetDemoBtn">↺ Reset Jobs</button>
+        </div>
+      </div>
+      <div class="filter-bar">
+        <input type="text" id="taskSearch" placeholder="🔍 Search tasks..." />
+        <select id="categoryFilter">
+          <option value="">All Categories</option>
+          <option>Delivery</option><option>Cleaning</option><option>Repair</option>
+          <option>Tutoring</option><option>Moving Help</option><option>Errands</option><option>Other</option>
+        </select>
+        <div class="radius-wrap">
+          <label>Radius: <strong id="radiusVal">10</strong> km</label>
+          <input type="range" id="radiusSlider" min="1" max="20" value="10" />
+        </div>
+      </div>
+      <div class="tasks-grid" id="nearbyTasksContainer"></div>
+    </div>
+
+    <!-- LIFECYCLE TAB -->
+    <div class="app-tab-content" id="lifecycleTab">
+      <p class="section-sub" style="margin-bottom:1rem;text-align:center;">Track all tasks — posted, in-progress, completed</p>
+      <div class="lifecycle-grid" id="lifecycleBoardContainer"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     STATS
+══════════════════════════════════════ -->
+<section class="stats-section">
+  <div class="container stats-grid">
+    <div class="stat-item reveal">
+      <span class="stat-num" data-target="12400">0</span>
+      <span class="stat-label">Tasks Completed</span>
+    </div>
+    <div class="stat-item reveal">
+      <span class="stat-num" data-target="3200">0</span>
+      <span class="stat-label">Verified Workers</span>
+    </div>
+    <div class="stat-item reveal">
+      <span class="stat-num" data-target="48">0</span>
+      <span class="stat-label">Cities</span>
+    </div>
+    <div class="stat-item reveal">
+      <span class="stat-num" data-target="48" data-decimal="1">0</span>
+      <span class="stat-label">Avg Rating ★</span>
+      <span class="stat-suffix">/5</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     TESTIMONIALS
+══════════════════════════════════════ -->
+<section class="testimonials" id="testimonials">
+  <div class="container">
+    <h2 class="section-title text-center">What People <span class="gradient-text">Say</span></h2>
+    <div class="slider-wrap">
+      <button class="slider-btn" id="sliderPrev">&#8249;</button>
+      <div class="slider-track" id="sliderTrack">
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p>"Got my washing machine fixed in 2 hours! The worker showed a QR code on arrival — so professional. I knew I had the right person. Highly recommend Kwickr!"</p>
+          <div class="reviewer">
+            <span class="reviewer-avatar">🧑</span>
+            <div><strong>Rahul M.</strong><small>Job Provider, Pune</small></div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p>"I've been doing delivery and repair tasks on Kwickr for 3 months. The pay is great and I choose my own hours. The QR verification makes providers trust me instantly."</p>
+          <div class="reviewer">
+            <span class="reviewer-avatar">👩</span>
+            <div><strong>Priya S.</strong><small>Freelancer, Mumbai</small></div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="stars">★★★★☆</div>
+          <p>"Needed help moving furniture — found a team on Kwickr within 30 minutes. The in-app chat made coordination smooth and the QR handshake gave me confidence."</p>
+          <div class="reviewer">
+            <span class="reviewer-avatar">🧔</span>
+            <div><strong>Arun K.</strong><small>Job Provider, Bangalore</small></div>
+          </div>
+        </div>
+      </div>
+      <button class="slider-btn" id="sliderNext">&#8250;</button>
+    </div>
+    <div class="slider-dots" id="sliderDots"></div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     FAQ
+══════════════════════════════════════ -->
+<section class="faq-section" id="faq">
+  <div class="container">
+    <h2 class="section-title text-center">Frequently Asked <span class="gradient-text">Questions</span></h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q">How does payment work? <span>+</span></button>
+        <div class="faq-a"><p>Payment is made securely after the provider confirms task completion. We simulate UPI/card/net banking payment. Workers receive funds within 24 hours.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">How is worker verification done? <span>+</span></button>
+        <div class="faq-a"><p>Workers must submit a selfie (via camera), a valid government ID (Aadhaar, PAN, Driving License, Passport or Voter ID), and verify their phone via OTP. Profiles are reviewed within 24 hours and marked Verified.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">How does the QR code verification work? <span>+</span></button>
+        <div class="faq-a"><p>When a worker accepts a task, they receive a unique QR code with a security PIN. On arrival at the job site, they show this QR to the provider. The provider scans or enters the PIN to confirm the right person has arrived before work begins.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">What is the task radius? <span>+</span></button>
+        <div class="faq-a"><p>You can set a custom radius from 1–20 km. Only freelancers within that radius will be notified about your task. Default is 10 km. Adjust using the slider on the Nearby Tasks board.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Is it free to join Kwickr? <span>+</span></button>
+        <div class="faq-a"><p>Yes! Signing up is completely free for both job providers and freelancers. A small platform fee is charged only on successful task completion. No subscription, no hidden charges.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     CONTACT
+══════════════════════════════════════ -->
+<section class="contact-section" id="contact">
+  <div class="container contact-inner">
+    <div class="contact-text reveal">
+      <h2 class="section-title">Get In <span class="gradient-text">Touch</span></h2>
+      <p>Have questions or feedback? We'd love to hear from you.</p>
+      <div class="contact-info">
+        <div>📧 hello@kwickr.in</div>
+        <div>📞 +91 98765 43210</div>
+        <div>📍 Pune, Maharashtra, India</div>
+      </div>
+    </div>
+    <form class="contact-form reveal" id="contactForm" novalidate>
+      <div class="form-group">
+        <label for="contactName">Name *</label>
+        <input type="text" id="contactName" placeholder="Your full name" required />
+      </div>
+      <div class="form-group">
+        <label for="contactEmail">Email *</label>
+        <input type="email" id="contactEmail" placeholder="your@email.com" required />
+      </div>
+      <div class="form-group">
+        <label for="contactMessage">Message *</label>
+        <textarea id="contactMessage" rows="4" placeholder="How can we help?" required></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary btn-full">Send Message ✉️</button>
+    </form>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     FOOTER
+══════════════════════════════════════ -->
+<footer class="footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <a href="#home" class="nav-logo">
+        <svg width="32" height="32" viewBox="0 0 38 38" fill="none">
+          <rect width="38" height="38" rx="10" fill="#4B1FA8"/>
+          <text x="6" y="28" font-size="22" font-weight="900" fill="white" font-family="Poppins,sans-serif">K</text>
+          <line x1="27" y1="9" x2="36" y2="9" stroke="#A78BFA" stroke-width="2.5" stroke-linecap="round"/>
+          <line x1="29" y1="15" x2="36" y2="15" stroke="#A78BFA" stroke-width="2" stroke-linecap="round"/>
+          <line x1="27" y1="21" x2="36" y2="21" stroke="#A78BFA" stroke-width="2.5" stroke-linecap="round"/>
+        </svg>
+        <span class="logo-text" style="color:#fff;">KWICKR</span>
+      </a>
+      <p>Work Near You. Earn More.</p>
+      <div class="social-icons">
+        <a href="#" aria-label="Twitter">🐦</a>
+        <a href="#" aria-label="Instagram">📸</a>
+        <a href="#" aria-label="LinkedIn">💼</a>
+        <a href="#" aria-label="WhatsApp">💬</a>
+      </div>
+    </div>
+    <div class="footer-links">
+      <h5>Quick Links</h5>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#how-it-works">How It Works</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#workingDemo">Try Demo</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-links">
+      <h5>For Users</h5>
+      <ul>
+        <li><a href="#" onclick="goToPostTaskBoard();return false;">Post a Task</a></li>
+        <li><a href="#" onclick="openAuthModal('worker');return false;">Become a Worker</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#testimonials">Reviews</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2024 Kwickr. All rights reserved. Made with ❤️ in India.</p>
+  </div>
+</footer>
+
+<!-- ══════════════════════════════════════
+     MODALS
+══════════════════════════════════════ -->
+
+<!-- MAP PICKER -->
+<div class="modal-backdrop" id="mapPickerModal">
+  <div class="modal-dialog">
+    <div class="modal-header">
+      <h3>📍 Pick Location on Map</h3>
+      <button class="modal-close" onclick="closeModal('mapPickerModal')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="map-search-bar">
+        <input type="text" id="mapSearchInput" placeholder="Search an address..." />
+        <button class="btn btn-primary btn-sm" onclick="simulateMapSearch()">Search</button>
+      </div>
+      <div class="map-canvas" id="mapCanvas">
+        <div class="map-grid-bg"></div>
+        <div class="map-marker" id="mapMarker">📍</div>
+        <p class="map-hint">Click on the map to place a pin</p>
+      </div>
+      <div class="map-coords" id="mapCoords">Lat: —, Lng: —</div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" onclick="closeModal('mapPickerModal')">Cancel</button>
+      <button class="btn btn-primary" onclick="confirmMapLocation()">✅ Confirm Location</button>
+    </div>
+  </div>
+</div>
+
+<!-- WORKER INFO (shown to provider when worker requests) -->
+<div class="modal-backdrop" id="workerInfoModal">
+  <div class="modal-dialog">
+    <div class="modal-header">
+      <h3>👷 Worker Request</h3>
+      <button class="modal-close" onclick="closeModal('workerInfoModal')">✕</button>
+    </div>
+    <div class="modal-body" id="workerInfoBody"></div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" onclick="closeModal('workerInfoModal')">Decline</button>
+      <button class="btn btn-green" id="confirmAcceptBtn">Accept Worker ✅</button>
+    </div>
+  </div>
+</div>
+
+<!-- DEMAND MODAL (worker sends to provider) -->
+<div class="modal-backdrop" id="demandModal">
+  <div class="modal-dialog">
+    <div class="modal-header">
+      <h3>📨 Send Request to Provider</h3>
+      <button class="modal-close" onclick="closeModal('demandModal')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-task-title" id="demandTaskTitle"></div>
+      <div class="form-group">
+        <label>Your Name</label>
+        <input type="text" id="demandName" placeholder="Full name" />
+      </div>
+      <div class="form-group">
+        <label>Your Phone</label>
+        <input type="tel" id="demandPhone" placeholder="+91 XXXXX XXXXX" />
+      </div>
+      <div class="form-group">
+        <label>Your Price (₹)</label>
+        <input type="number" id="demandAmount" placeholder="Enter your asking price" min="1" />
+      </div>
+      <div class="form-group">
+        <label>When can you start?</label>
+        <input type="text" id="demandEta" placeholder="e.g. Within 1 hour" />
+      </div>
+      <div class="form-group">
+        <label>Message to Provider</label>
+        <textarea id="demandMessage" rows="3" placeholder="Introduce yourself and share your experience..."></textarea>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" onclick="closeModal('demandModal')">Cancel</button>
+      <button class="btn btn-green" id="submitDemandBtn">Send Request 📨</button>
+    </div>
+  </div>
+</div>
+
+<!-- PHOTO UPLOAD -->
+<div class="modal-backdrop" id="photoUploadModal">
+  <div class="modal-dialog">
+    <div class="modal-header">
+      <h3>📸 Upload Progress Photo</h3>
+      <button class="modal-close" onclick="closeModal('photoUploadModal')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-task-title" id="photoTaskTitle"></div>
+      <div class="form-group">
+        <label>Photo / Video</label>
+        <input type="file" id="progressPhotoInput" accept="image/*,video/*" capture="environment" />
+        <div class="photo-preview-area" id="photoPreviewArea"></div>
+      </div>
+      <div class="form-group">
+        <label>Progress: <strong id="progressPctDisplay">50%</strong></label>
+        <input type="range" id="progressPct" min="0" max="100" value="50"
+               oninput="document.getElementById('progressPctDisplay').textContent=this.value+'%'" />
+      </div>
+      <div class="form-group">
+        <label>Caption</label>
+        <input type="text" id="progressCaption" placeholder="Describe this update..." />
+      </div>
+      <div id="uploadedPhotosList" class="uploaded-photos-list"></div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" onclick="closeModal('photoUploadModal')">Close</button>
+      <button class="btn btn-primary" id="submitPhotoBtn">Upload 📤</button>
+    </div>
+  </div>
+</div>
+
+<!-- PAYMENT -->
+<div class="modal-backdrop" id="paymentModal">
+  <div class="modal-dialog">
+    <div class="modal-header">
+      <h3>💳 Confirm &amp; Pay</h3>
+      <button class="modal-close" onclick="closeModal('paymentModal')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="payment-summary" id="paymentSummary"></div>
+      <div class="payment-methods">
+        <h4>Payment Method</h4>
+        <div class="payment-opts">
+          <label class="pay-opt"><input type="radio" name="payMethod" value="upi" checked /> 📱 UPI / Google Pay</label>
+          <label class="pay-opt"><input type="radio" name="payMethod" value="card" /> 💳 Debit / Credit Card</label>
+          <label class="pay-opt"><input type="radio" name="payMethod" value="netbanking" /> 🏦 Net Banking</label>
+          <label class="pay-opt"><input type="radio" name="payMethod" value="cash" /> 💵 Cash on Completion</label>
+        </div>
+      </div>
+      <div class="payment-secure-note">🔒 This is a simulated demo. No real money is charged.</div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" onclick="closeModal('paymentModal')">Cancel</button>
+      <button class="btn btn-green" id="confirmPayBtn">Pay Now ✅</button>
+    </div>
+  </div>
+</div>
+
+<!-- RATING -->
+<div class="modal-backdrop" id="ratingModal">
+  <div class="modal-dialog">
+    <div class="modal-header">
+      <h3>⭐ Rate Your Worker</h3>
+      <button class="modal-close" onclick="closeModal('ratingModal')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-task-title" id="ratingTaskTitle"></div>
+      <div class="star-rating" id="starRating">
+        <span class="star" data-val="1">★</span>
+        <span class="star" data-val="2">★</span>
+        <span class="star" data-val="3">★</span>
+        <span class="star" data-val="4">★</span>
+        <span class="star" data-val="5">★</span>
+      </div>
+      <div class="form-group" style="margin-top:1rem;">
+        <label>Comment (optional)</label>
+        <textarea id="ratingComment" rows="3" placeholder="Share your experience with this worker..."></textarea>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" onclick="closeModal('ratingModal')">Skip</button>
+      <button class="btn btn-primary" id="submitRatingBtn">Submit ⭐</button>
+    </div>
+  </div>
+</div>
+
+<!-- CHAT -->
+<div class="modal-backdrop" id="chatModal">
+  <div class="modal-dialog modal-chat-dialog">
+    <div class="modal-header">
+      <h3 id="chatModalTitle">💬 Chat</h3>
+      <div class="chat-header-actions">
+        <button class="btn btn-outline btn-sm" onclick="simulateCall()">📞 Call</button>
+        <button class="btn btn-green btn-sm" onclick="openWhatsApp()">WhatsApp</button>
+      </div>
+      <button class="modal-close" onclick="closeModal('chatModal')">✕</button>
+    </div>
+    <div class="chat-window" id="chatWindow"></div>
+    <div class="chat-input-area">
+      <div class="chat-chips">
+        <button class="chip" onclick="sendChatChip('On my way! 🚗')">On my way 🚗</button>
+        <button class="chip" onclick="sendChatChip('Reached location 📍')">Reached 📍</button>
+        <button class="chip" onclick="sendChatChip('Task complete ✅')">Done ✅</button>
+        <button class="chip" onclick="sendChatChip('Need 15 more minutes ⏰')">15 mins ⏰</button>
+      </div>
+      <div class="chat-bar">
+        <input type="text" id="chatInput" placeholder="Type a message..." />
+        <button id="chatSendBtn" class="btn btn-primary btn-sm">Send</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- WORKER QR PASS -->
+<div class="modal-backdrop" id="workerQrModal">
+  <div class="modal-dialog modal-qr-dialog">
+    <div class="modal-header">
+      <h3>📱 Worker Arrival QR Pass</h3>
+      <button class="modal-close" onclick="closeModal('workerQrModal')">✕</button>
+    </div>
+    <div class="modal-body worker-qr-card-body">
+      <div class="qr-worker-profile-strip">
+        <div class="qr-avatar">👷</div>
+        <div>
+          <div class="qr-worker-name" id="qrWorkerName">—</div>
+          <div class="qr-worker-badge">✅ Verified Worker</div>
+        </div>
+      </div>
+      <div class="qr-canvas-container">
+        <div class="qr-frame-corners">
+          <span class="qr-corner tl"></span>
+          <span class="qr-corner tr"></span>
+          <span class="qr-corner bl"></span>
+          <span class="qr-corner br"></span>
+        </div>
+        <canvas id="workerQrCanvas" width="200" height="200"></canvas>
+        <div class="qr-scan-badge">SCAN TO VERIFY</div>
+      </div>
+      <div class="qr-security-pin-box">
+        <span class="pin-label">Security PIN:</span>
+        <span class="pin-value" id="qrPinDisplay">——</span>
+      </div>
+      <div class="qr-task-meta-summary" id="qrTaskMeta"></div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" onclick="closeModal('workerQrModal')">Close</button>
+    </div>
+  </div>
+</div>
+
+<!-- PROVIDER VERIFY (SCANNER) -->
+<div class="modal-backdrop" id="providerVerifyModal">
+  <div class="modal-dialog modal-qr-dialog">
+    <div class="modal-header">
+      <h3>🔍 Verify Worker QR</h3>
+      <button class="modal-close" onclick="closeModal('providerVerifyModal')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="scanner-camera-view">
+        <div class="scanner-viewfinder">
+          <span class="viewfinder-corner tl"></span>
+          <span class="viewfinder-corner tr"></span>
+          <span class="viewfinder-corner bl"></span>
+          <span class="viewfinder-corner br"></span>
+          <div class="scanner-laser-line"></div>
+        </div>
+        <p class="scanner-label">Point camera at worker's QR code</p>
+      </div>
+      <div class="qr-or-divider"><span>OR</span></div>
+      <div class="pin-input-wrap">
+        <label>Enter Worker's 4-digit PIN manually</label>
+        <input type="text" id="pinVerifyInput" maxlength="4" placeholder="e.g. 4821" inputmode="numeric" />
+        <div class="verification-success-alert" id="verifySuccessAlert" style="display:none;">
+          <span class="success-alert-icon">✅</span>
+          <span>Worker verified! Task is now In Progress.</span>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" onclick="closeModal('providerVerifyModal')">Cancel</button>
+      <button class="btn btn-green" id="simulateQrScanBtn">📱 Simulate QR Scan</button>
+      <button class="btn btn-primary" id="verifyPinBtn">Verify PIN</button>
+    </div>
+  </div>
+</div>
+
+<!-- AUTH MODAL (Login / Sign Up) -->
+<div class="modal-backdrop" id="authModal">
+  <div class="modal-dialog modal-auth-dialog">
+    <div class="modal-header">
+      <h3 id="authModalTitle">Join Kwickr</h3>
+      <button class="modal-close" onclick="closeModal('authModal')">✕</button>
+    </div>
+    <div class="modal-body">
+      <!-- Role Tabs -->
+      <div class="auth-role-tabs">
+        <button class="auth-role-tab active" id="tabRoleProvider" onclick="setAuthRole('provider')">🧑‍💼 Job Provider</button>
+        <button class="auth-role-tab"        id="tabRoleWorker"   onclick="setAuthRole('worker')">👷 Freelancer</button>
+      </div>
+
+      <!-- STEP 1: Details -->
+      <form id="authPhoneForm" novalidate>
+        <div class="auth-steps-indicator">
+          <div class="auth-step-dot active">1</div>
+          <div class="auth-step-line"></div>
+          <div class="auth-step-dot">2</div>
+          <div class="auth-step-line"></div>
+          <div class="auth-step-dot">3</div>
+        </div>
+        <p class="auth-step-label">Step 1 of 3 — Account Details</p>
+        <div class="form-group">
+          <label>Full Name *</label>
+          <input type="text" id="authName" placeholder="Your full name" required />
+        </div>
+        <div class="form-group">
+          <label>Phone / Email *</label>
+          <input type="text" id="authPhone" placeholder="+91 XXXXX XXXXX or email@example.com" required />
+        </div>
+        <div class="form-group">
+          <label>Password *</label>
+          <input type="password" id="authPassword" placeholder="At least 6 characters" required />
+        </div>
+        <button type="submit" class="btn btn-primary btn-full">Send OTP 📲</button>
+        <p class="auth-login-link">Already have an account? <a href="#" onclick="switchToLogin();return false;">Log In</a></p>
+      </form>
+
+      <!-- STEP 2: OTP -->
+      <form id="authOtpForm" style="display:none;" novalidate>
+        <div class="auth-steps-indicator">
+          <div class="auth-step-dot done">✓</div>
+          <div class="auth-step-line active"></div>
+          <div class="auth-step-dot active">2</div>
+          <div class="auth-step-line"></div>
+          <div class="auth-step-dot">3</div>
+        </div>
+        <p class="auth-step-label">Step 2 of 3 — Phone Verification</p>
+        <p class="otp-hint">📱 OTP sent! Enter any 4 digits to continue (this is a demo).</p>
+        <div class="form-group">
+          <label>OTP *</label>
+          <input type="text" id="authOtp" maxlength="4" placeholder="4-digit OTP" inputmode="numeric" required />
+        </div>
+        <button type="submit" class="btn btn-primary btn-full">Verify OTP ✅</button>
+        <button type="button" class="btn btn-outline btn-full" style="margin-top:.5rem;"
+                onclick="document.getElementById('authOtpForm').style.display='none';document.getElementById('authPhoneForm').style.display='block';">← Back</button>
+      </form>
+
+      <!-- STEP 3: KYC -->
+      <form id="authKycForm" style="display:none;" novalidate>
+        <div class="auth-steps-indicator">
+          <div class="auth-step-dot done">✓</div>
+          <div class="auth-step-line active"></div>
+          <div class="auth-step-dot done">✓</div>
+          <div class="auth-step-line active"></div>
+          <div class="auth-step-dot active">3</div>
+        </div>
+        <p class="auth-step-label">Step 3 of 3 — Identity Verification</p>
+
+        <div class="kyc-info-box">
+          🔒 Your documents are encrypted and used only for identity verification. They are never shared publicly.
+        </div>
+
+        <!-- Selfie -->
+        <div class="kyc-section">
+          <h4 class="kyc-section-title">🤳 Take a Selfie</h4>
+          <p class="kyc-section-sub">Use your front camera or upload a clear face photo.</p>
+          <div class="kyc-upload-area" id="selfieUploadArea">
+            <input type="file" id="selfieInput" accept="image/*" capture="user" class="kyc-file-input" />
+            <label for="selfieInput" class="kyc-upload-label">
+              <div class="kyc-upload-icon">🤳</div>
+              <div class="kyc-upload-text">Tap to take selfie or upload photo</div>
+              <div class="kyc-upload-sub">JPG, PNG · Max 5 MB</div>
+            </label>
+            <div class="kyc-preview" id="selfiePreview" style="display:none;">
+              <img id="selfiePreviewImg" src="" alt="Selfie preview" />
+              <button type="button" class="kyc-remove-btn" onclick="removeSelfie()">✕ Remove</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- ID Proof -->
+        <div class="kyc-section">
+          <h4 class="kyc-section-title">🪪 Upload Government ID</h4>
+          <p class="kyc-section-sub">Valid government-issued photo ID required for verification.</p>
+          <div class="form-group">
+            <label>ID Type *</label>
+            <select id="idType" required>
+              <option value="">Select ID type</option>
+              <option value="aadhaar">Aadhaar Card</option>
+              <option value="pan">PAN Card</option>
+              <option value="driving">Driving License</option>
+              <option value="passport">Passport</option>
+              <option value="voter">Voter ID Card</option>
+            </select>
+          </div>
+          <div class="kyc-upload-area" id="idUploadArea">
+            <input type="file" id="idInput" accept="image/*,application/pdf" class="kyc-file-input" />
+            <label for="idInput" class="kyc-upload-label">
+              <div class="kyc-upload-icon">📄</div>
+              <div class="kyc-upload-text">Tap to upload ID document</div>
+              <div class="kyc-upload-sub">JPG, PNG, PDF · Max 10 MB</div>
+            </label>
+            <div class="kyc-preview" id="idPreview" style="display:none;">
+              <img id="idPreviewImg" src="" alt="ID preview" style="display:none;" />
+              <div id="idPreviewPdf" class="pdf-preview-badge" style="display:none;">📄 PDF Uploaded Successfully</div>
+              <button type="button" class="kyc-remove-btn" onclick="removeId()">✕ Remove</button>
+            </div>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-full">Submit for Verification 🔐</button>
+        <p class="kyc-skip-note">
+          You can also <a href="#" onclick="skipKyc();return false;">skip for now</a>
+          and complete verification from your profile later.
+        </p>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
